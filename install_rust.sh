@@ -8,6 +8,6 @@ sudo git clone https://github.com/longld/peda.git
 sudo curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 while IFS= read -r line; do
-  echo "source /peda/peda.py" > /home/${line}/.gdbinit && \
-  chown ${line}: /home/${line}/.gdbinit
+  echo "source /peda/peda.py" > /users/${line}/.gdbinit && \
+  chown ${line}: /users/${line}/.gdbinit
 done < <( ls -l /users | grep 4096 | cut -d' ' -f3 )
