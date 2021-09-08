@@ -12,5 +12,5 @@ while IFS= read -r line; do
   chown ${line}: /users/${line}/.gdbinit
   cd /users/${line}
   git clone https://github.com/remzi-arpacidusseau/ostep-code.git
-  chown ${line}: /users/${line}/ostep-code
+  chown -R ${line}: /users/${line}/ostep-code
 done < <( ls -l /users | grep 4096 | cut -d' ' -f3 )
