@@ -10,4 +10,7 @@ sudo curl https://sh.rustup.rs -sSf | sh -s -- -y
 while IFS= read -r line; do
   echo "source /peda/peda.py" > /users/${line}/.gdbinit && \
   chown ${line}: /users/${line}/.gdbinit
+  cd /users/${line}
+  git clone https://github.com/remzi-arpacidusseau/ostep-code.git
+  chown ${line}: /users/${line}/ostep-code
 done < <( ls -l /users | grep 4096 | cut -d' ' -f3 )
