@@ -13,4 +13,7 @@ while IFS= read -r line; do
   cd /users/${line}
   git clone https://github.com/remzi-arpacidusseau/ostep-code.git
   chown -R ${line}: /users/${line}/ostep-code
+  echo "curl https://sh.rustup.rs -sSf | sh -s -- -y" > /users/${line}/setup.sh
+  chmod 755 /users/${line}/setup.sh
+  chown -R ${line}: /users/${line}/setup.sh
 done < <( ls -l /users | grep 4096 | cut -d' ' -f3 )
