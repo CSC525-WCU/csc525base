@@ -15,4 +15,5 @@ while IFS= read -r line; do
   echo "curl https://sh.rustup.rs -sSf | sh -s -- -y" > /users/${line}/setup.sh
   chmod 755 /users/${line}/setup.sh
   chown -R ${line}: /users/${line}/setup.sh
+  sudo chsh -s /bin/bash ${line}
 done < <( ls -l /users | grep 4096 | cut -d' ' -f3 )
