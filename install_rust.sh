@@ -13,6 +13,7 @@ while IFS= read -r line; do
   git clone https://github.com/remzi-arpacidusseau/ostep-code.git
   chown -R ${line}: /users/${line}/ostep-code
   echo "curl https://sh.rustup.rs -sSf | sh -s -- -y" > /users/${line}/setup.sh
+  echo "source $HOME/.cargo/env" >> /users/${line}/setup.sh
   chmod 755 /users/${line}/setup.sh
   chown -R ${line}: /users/${line}/setup.sh
   sudo chsh -s /bin/bash ${line}
