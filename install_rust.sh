@@ -17,4 +17,7 @@ while IFS= read -r line; do
   chmod 755 /users/${line}/setup.sh
   chown -R ${line}: /users/${line}/setup.sh
   sudo chsh -s /bin/bash ${line}
+  git clone https://github.com/longld/peda.git && \
+  echo "source $HOME/peda/peda.py" > /users/${line}/.gdbinit && \
+  chown -R ${line}: /users/${line}/.gdbinit
 done < <( ls -l /users | grep 4096 | cut -d' ' -f3 )
